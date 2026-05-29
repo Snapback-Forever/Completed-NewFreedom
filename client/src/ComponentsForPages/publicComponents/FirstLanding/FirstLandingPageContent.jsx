@@ -1,0 +1,130 @@
+import Carousel from 'react-bootstrap/Carousel';
+
+import React, { useState } from 'react'
+import DOMPurify from 'dompurify';
+import { Link } from 'react-router-dom';
+import joint from "../../../images/landingPageImg/joint.png"
+
+const FirstLandingPageContent = ({ darkMode, setDarkMode, landingContent, allStories, allSupporters }) => {
+
+  const baseUrl = "http://localhost:8080";
+
+  const tierOrder = { platinum: 1, gold: 2, silver: 3, bronze: 4 };
+
+  const visibleSupporters = [...allSupporters].sort(
+    (a, b) => (tierOrder[a.tier] || 999) - (tierOrder[b.tier] || 999)
+  );
+
+  const supporters = visibleSupporters.filter((sup) => sup.tier !== "supporter");
+  const chunkSize = 4;
+  const slides = supporters.reduce((acc, _, i) => (i % chunkSize === 0 ? [...acc, supporters.slice(i, i + chunkSize)] : acc), []);
+
+  return (
+
+    <div style={{ minHeight: "38%", color: !darkMode ? "black" : "white", display: "flex", flexDirection: "column", alignItems: "center", width: "100%", boxSizing: "border-box" }}>
+
+      {landingContent?.mainVideo?.startsWith("http") ? (
+        <div style={{ width: "100%", display: "flex", justifyContent: "center", margin: "0.5rem 0" }}>
+          <video controls style={{ width: "60%", height: "50vh" }} aria-label="Welcome To New Freedom Video" title={`YouTube Link: ${landingContent?.mainVideo}`} className='videoMedia'>
+            <source src={landingContent?.mainVideo} type="video/mp4" />
+          </video>
+        </div>
+      ) : null}
+
+      <div style={{ width: "100%", minHeight: "fit-content", display: "flex", flexDirection: "column", boxSizing: "border-box" }}>
+        {landingContent?.mainTitle ? <h1 style={{ width: "100%", textAlign: "center", margin: "0.5rem 0" }}>{landingContent?.mainTitle}</h1>
+          :
+          <h1 style={{ width: "100%", textAlign: "center", margin: "0.5rem 0" }}>Welcome Home To New Freedom</h1>
+        }
+
+
+        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(landingContent?.mainContent) }} style={{ margin: "2vh 0" }} />
+
+
+
+        {allStories?.filter((story) => story?.consentToPublish).length !== 0 ? (
+          <div style={{ width: "100%", display: "flex", overflowX: "auto", gap: "1rem", boxSizing: "border-box", margin: "1vh 0", padding: "1vh 1vw", minWidth: 0 }}>
+            {allStories?.filter((story) => story?.consentToPublish).slice().reverse().slice(0, 10).map((story, index) => {
+              const baseUrl = "http://localhost:8080";
+
+              const imgSrc = story?.imageFileId && story?.imageBucketName ? `${baseUrl}/upload/image/${story?.imageFileId}?bucketName=${story?.imageBucketName}` : story?.imageUrl;
+
+              return (
+                <Link key={story?._id || index} to={`/successStory/${story?._id}`} style={{ color: "black", textDecoration: "none", flex: "0 0 auto", width: "320px", minWidth: "320px" }}>
+                  <div style={{ width: "100%", height: "400px", background: "white", overflow: "hidden", borderRadius: "10px" }}>
+                    <img src={imgSrc} alt="Success story" style={{ width: "100%", height: "200px", objectFit: "cover", display: "block" }} />
+
+                    <h2 style={{ textAlign: "center", margin: "1rem 0 0.5rem 0" }}> {story?.firstName} {story?.lastName} </h2>
+
+                    <div style={{ padding: "0 1rem", overflow: "hidden" }}>
+                      <div style={{ textAlign: "center", margin: 0, wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(story?.outcomeSummary) }} />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        ) : null}
+
+        <div style={{ display: "flex", justifyContent: "center", background: "white" }}>
+          <a href="https://www.jointcommission.org/en-us/about-us/recognizing-excellence/find-accredited-organizations">
+            <img src={joint} alt="Joint Commission" style={{ width: "30vw", height: "30vh", maxWidth: "30vw", maxHeight: "30vh" }} />
+          </a>
+        </div>
+
+        <>
+          {supporters.length !== 0 && !supporters.length > 6 ? <h3 style={{ textAlign: "center", margin: "0.5rem 0", background: "lightGrey", color: "black" }}>Supporters Of Our Mission</h3> : ""}
+          {supporters.length > 6 ? (<>
+            {supporters.length !== 0 ? <h3 style={{ textAlign: "center", margin: "0.5rem 0", background: "lightGrey", color: "black" }}>Supporters Of Our Mission</h3> : ""}
+
+            <Carousel>
+              {slides.map((group, idx) => (
+                <Carousel.Item key={idx} interval={idx === 0 ? 5000 : idx === 1 ? 5000 : undefined}>
+                  <div style={{ display: "flex", justifyContent: "center", alignItems: "stretch", gap: "0.5rem", width: "100%", boxSizing: "border-box", padding: "0.5rem" }}>
+                    {group.map((sup) => {
+                      const imgSrc = sup?.logoFileId && sup?.logoBucketName ? `${baseUrl}/upload/image/${sup?.logoFileId}?bucketName=${sup?.logoBucketName}` : sup?.logoUrl;
+                      return (
+                        <div key={sup?._id} title={sup?.name} style={{ flex: "0 0 22%", minWidth: "22%", maxWidth: "22%", minHeight: "20vh", background: "white" }}>
+                          <a href={sup?.websiteLink} target="_blank" style={{ display: "block", width: "100%", height: "100%" }}>
+                            <img src={imgSrc} alt={sup?.name || "Supporter logo"} style={{ width: "100%", height: "20vh", objectFit: "contain", display: "block" }} />
+                          </a>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </>) : (
+            <div style={{ width: "100%", display: "flex", justifyContent: "center", gap: "0.5rem", boxSizing: "border-box", margin: "0.5rem 0", flexWrap: "wrap" }}>
+              {supporters.map((sup) => { const imgSrc = sup?.logoFileId && sup?.logoBucketName ? `${baseUrl}/upload/image/${sup?.logoFileId}?bucketName=${sup?.logoBucketName}` : sup?.logoUrl; return (<div key={sup?._id} title={sup?.name} style={{ minWidth: "10vw", maxWidth: "10vw", minHeight: "20vh", maxHeight: "20vh", margin: "1vh 0.5vw", background: "white" }}><a href={sup?.websiteLink} target="_blank"><img src={imgSrc} alt={sup?.name || "Supporter logo"} style={{ width: "100%", height: "20vh", objectFit: "contain", display: "block" }} /></a></div>); })}
+            </div>
+          )}
+        </>
+
+        {allSupporters.length !== 0 ? (
+          <>
+            <h3 style={{ textAlign: "center", margin: "1vh 0", background: "lightGrey", color: "black" }}>Agencies We Work With</h3>
+            <div style={{ width: "100%", display: "flex", justifyContent: "center", gap: "1vw", boxSizing: "border-box", margin: "1vh 0", flexWrap: "wrap" }}>
+              {allSupporters.filter((sup) => sup.tier === "supporter").map((sup) => {
+
+                const baseUrl = "http://localhost:8080";
+                const imgSrc = sup?.logoFileId && sup?.logoBucketName ? `${baseUrl}/upload/image/${sup?.logoFileId}?bucketName=${sup?.logoBucketName}` : sup?.logoUrl;
+                return (
+                  <div key={sup?._id} style={{ minWidth: "10vw", maxWidth: "15vw", minHeight: "20vh", maxHeight: "20vh", margin: "1vh 0.5vw", background: "white" }} title={sup?.name}>
+                    <a href={sup?.websiteLink} target="_blank">
+                      <img src={imgSrc} alt="Success story" style={{ minWidth: "100%", maxWidth: "100%", minHeight: "20vh", maxHeight: "20vh" }} />
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        ) : null}
+      </div>
+    </div>
+
+  )
+}
+
+export default FirstLandingPageContent

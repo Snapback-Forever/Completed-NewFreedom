@@ -1,0 +1,856 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    word-wrap: break-word;
+}
+
+button:hover {
+background: maroon !important;
+color: white !important;
+width: 100%;
+}
+
+.seeMe:hover {
+border: maroon !important;
+color: white !important;
+width: 100%;
+}
+
+.scrollBar::-webkit-scrollbar {
+    display: none;
+}
+
+.spin {
+    animation-name: spin;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateY(360deg);
+    }
+}
+
+.happyBirthday {
+    animation-name: happyBirthday;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    padding: 1vh 1vw;
+    
+}
+
+@keyframes happyBirthday {
+    0% {
+        color: red;
+        border: 5px double red;
+    }
+
+    50% {
+        color: green;
+        border: 5px double green;
+
+    }
+
+    100% {
+        color: black;
+        border: 5px double red;
+    }
+}
+
+.lookAtMe {
+    animation-name: lookAtMe;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+
+    padding: 0 1vw;
+}
+
+@keyframes lookAtMe {
+    0% {
+        background-color: white;
+        color: red;
+    }
+
+    100% {
+        color: white;
+        background: red;
+
+    }
+}
+
+dialog {
+    background-color: rgba(0, 0, 0, 0.514);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.drawHover {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 95vw !important;
+    max-width: 95vw !important;
+    min-height: 90vh !important;
+    max-height: 90vh !important;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.loginModal {
+    width: 60%;
+    height: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+}
+
+.forgotModal {
+    width: 90%;
+    height: 97%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+}
+
+.termsModal {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+}
+
+.registerModal {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+}
+
+.searchUserModal {
+    width: 80%;
+    height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+}
+
+.searchMenteeModal {
+    width: 80%;
+    height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+}
+
+.searchProgramModal {
+    width: 95%;
+    height: 95%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+
+}
+
+.searchLocationModal {
+    width: 80%;
+    height: 98%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+
+}
+
+
+.replyModal {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+}
+
+.editListingModal {
+    width: 80vw;
+    height: 80vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+    padding: 1vh 1vw;
+}
+
+.questionModalTextArea {
+    width: 95%;
+    height: 95%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+   
+}
+
+.addImageProModal {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+}
+
+.editMenteeModal {
+    width: 80%;
+    height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+    padding: 2vh 0;
+}
+
+.addTeacherToPro {
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+}
+
+/* LANDING PAGE */
+.responsiveSelect {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.responsiveButton {
+    /* your existing button styles */
+}
+
+/* Desktop dropdown (works like before) */
+.dropdownPanel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    /* default: open to the right */
+    width: 30vw;
+    border: solid white;
+    margin-top: 0.2vh;
+    padding: 8px 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Only the last button: align to the right -> opens left */
+.dropdownPanel--alignRight {
+    right: 0;
+    left: auto;
+    background: rgb(96, 196, 230);
+}
+
+.fadeInImage {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.scrollBy {
+    display: flex;
+    animation: scrollBy 30s linear infinite;
+}
+
+@keyframes scrollBy {
+    from {
+        transform: translateX(100vw);
+        /* start just to the right of the label */
+    }
+
+    to {
+        transform: translateX(-100vw);
+        /* move across and out to the left */
+    }
+}
+
+/* LANDING PAGE END */
+
+/* Message Us Page */
+
+.messageUs {
+    display: none !important;
+}
+
+/* Message Us Page END */
+
+/* QA PAGE Us Page */
+
+.QAWhite {
+    /* Top layer: image, Bottom layer: gradient */
+    background-image:
+        url("./images/newFreedomLogo2.png"),
+        linear-gradient(to right, lightBlue 30%, blue);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 30% auto, cover;
+    background-position: center;
+}
+
+.QADark {
+    /* Top layer: image, Bottom layer: gradient */
+    background-image:
+        url("./images/whiteLogoNF2.png"),
+        linear-gradient(to right, black, blue);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 30% auto, cover;
+    background-position: center;
+}
+
+/* QA Page END */
+
+/* contact PAGE Us Page */
+
+.contactWhite {
+    /* Top layer: image, Bottom layer: gradient */
+    background-image:
+        url("./images/newFreedomLogo2.png"),
+        linear-gradient(to right, lightBlue 30%, blue);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 30% auto, cover;
+    background-position: center;
+}
+
+.contactDark {
+    /* Top layer: image, Bottom layer: gradient */
+    background-image:
+        url("./images/whiteLogoNF2.png"),
+        linear-gradient(to right, black, blue);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 30% auto, cover;
+    background-position: center;
+
+}
+
+/* contact Page END */
+
+@media (max-width: 700px) {
+
+    .responsiveHeader {
+        height: 20vh !important;
+    }
+
+    /* Navbar */
+.responsiveNavLogOut{
+    width: 30% !important;
+}
+
+.drawingWidth {
+    min-width: 98vw !important;
+}
+
+    /* Navbar end */
+
+    /* LANDING PAGE */
+
+    .videoMedia {
+        min-width: 98vw !important;
+    }
+
+    .responsiveNav {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-around !important;
+    }
+
+    .responsiveP {
+        width: fit-content !important;
+        padding: 0 0.5vw !important;
+    }
+
+    .responsiveBorder {
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(to top, lightBlue 30%, blue) !important;
+    }
+
+    .responsiveBorderDark {
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(to top, black, blue) !important;
+    }
+
+    .responsiveImage {
+        width: 100% !important;
+    }
+
+    .responsiveMessage {
+        width: 100% !important;
+    }
+
+    .responsiveSelect {
+        display: flex !important;
+        flex-direction: column;
+        height: fit-content !important;
+        margin-bottom: 2vh;
+    }
+
+    .responsiveSelect {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .responsiveDiv {
+        margin: 0.5vh 0 !important;
+    }
+
+    .responsiveButton {
+        width: 100%;
+        text-align: center;
+        /* optional */
+    }
+
+    .dropdownPanel,
+    .dropdownPanel--alignRight {
+        position: static;
+        /* no absolute positioning */
+        width: 100%;
+        /* full width under the button */
+        left: auto;
+        right: auto;
+        margin-top: 0.5rem;
+        /* spacing under button */
+        box-shadow: none;
+        /* optional for mobile look */
+    }
+
+    .responsiveLogin {
+        width: 90% !important;
+    }
+
+    .responsiveHeader {
+        width: 100vw !important;
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .responsiveImageHeader {
+        display: none !important;
+        background-color: rgba(0, 0, 0, 0.63);
+    }
+
+    .responsiveNFStaffCardsContainer {
+        flex-direction: column !important;
+       
+    }
+
+    .responsiveNFStaffCards {
+        width: 98vw !important;
+    }
+
+    
+
+    /* THIS IS NavBar Logged In  */
+
+.responsiveBirthday{
+    height: fit-content !important;
+}
+
+    /* END NavBar Logged In */
+
+    /* END LANDING PAGE */
+    
+
+    /* THIS IS Message US Page  */
+
+    .responsiveMessageUs {
+        display: none !important;
+    }
+
+    .messageUs {
+        display: flex !important;
+
+    }
+
+    .responsiveInput {
+        width: 90vw !important;
+    }
+
+    .responsiveButton {
+        width: 90vw !important;
+    }
+
+    /* THIS IS Message US Page END */
+
+    /* Contact Info Page  */
+
+    .responsiveCard {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .responsiveContactImage {
+        width: 90vw !important;
+
+    }
+
+    .responsiveContactImagesContainer {
+        width: 90vw !important;
+        height: 12vh !important;
+    }
+
+    .responsiveContactImages {
+        min-width: 30vw !important;
+        margin: 0 1vw;
+    }
+
+
+    /* Contact Info Page END */
+
+    /* Supporter Page */
+    .responsiveCardSupport {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Supporter Page End */
+
+    /* MSG's */
+    .responsiveUserCard {
+        width: 75vw !important;
+     
+    }
+
+    /* MSG's End */
+
+    /* guest Msgs */
+    .responsiveGuestMsg {
+        width: 100vw !important;
+    }
+
+    .responsiveGuestMsgDiv {
+        max-width: 98% !important;
+    }
+
+    /* guest Msgs end */
+
+    /* graduation */
+    .responsiveGraduates {
+        width: 100vw !important;
+    }
+
+    /* graduation end */
+
+    /* graduation */
+    .responsiveUser {
+        width: 98vw !important;
+        min-height: 50vh !important;
+        flex-direction: column;
+    }
+
+    .responsiveImageDiv {
+        min-width: 99% !important;
+        min-height: 30vh !important;
+        max-height: 30vh !important;
+    }
+
+    /* graduation end */
+
+    /* responsiveButtonCard */
+    .responsiveButtonCard {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .responsiveCardContainer {
+        width: 100% !important;
+        padding: 1vh 0;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .responsiveButtonCardButton {
+        width: 45% !important;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    /* responsiveButtonCard end */
+
+    /* RESPONSVE USER CARD ALL USERS && ADMIN ALL USERS */
+
+    .responsiveAllUserCardContainer {
+        width: 90vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .responsiveAllUserCards {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .responsiveAllUserCardImg {
+        width: 100% !important;
+    }
+
+    .responsiveAllUserCardImage {
+        min-width: 100% !important;
+    }
+
+    .responsiveAllUserCardInput {
+        min-width: 70vw !important;
+    }
+
+    .responsiveAllUserCardButton {
+        min-width: 70vw !important;
+    }
+
+    .responsiveAllUserCardButton2 {
+        min-width: 80vw !important;
+    }
+
+    .responsiveAllUserCardButtons {
+        max-width: 60vw !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .responsiveAllUserCardInfo {
+        width: 100% !important;
+    }
+
+    .responsiveUserAllQuestion {
+        width: 70vw !important;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .responsiveUserAllQuestionResponse {
+        width: 70vw !important;
+
+    }
+
+    .responsiveUserDirectMsg {
+        width: 70vw !important;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .responsiveUserNews {
+        width: 78vw !important;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .responsiveUserTeacher {
+        width: 78vw !important;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .responsiveUserSuccess {
+        width: 78vw !important;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .responsiveUserSuccessImage {
+        min-width: 96% !important;
+    }
+
+    .responsiveUserSuccessInfo {
+        min-width: 97% !important;
+    }
+
+    .responsiveUserSuccessVideoContainer {
+        width: 100% !important;
+    }
+
+    .responsiveUserSuccessVideo {
+        min-width: 98% !important;
+    }
+
+    .responsiveUserSuccessBottom {
+        min-width: 98% !important;
+        display: flex;
+        flex-direction: column;
+        margin: 1vh 0;
+    }
+
+    .responsiveUserEvent {
+        min-width: 98% !important;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* RESPONSVE USER CARD END */
+
+    /* RESPONSVE USER CARD ALL MENTEE && ADMIN ALL MENTEE */
+
+    .responsiveAllMenteeCards {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .responsiveAllMenteeCardButton {
+        min-width: 75vw !important;
+        margin: 1vh 0;
+    }
+
+    .responsiveAllMenteeCardDiv {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .responsiveAllMenteeCardImg {
+        min-width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .responsiveAllMenteeCardImage {
+        min-width: 100% !important;
+    }
+
+    .responsiveAllMenteeCardInput {
+        min-width: 70vw !important;
+    }
+
+    .responsiveAllMenteeContainer {
+        min-width: 70vw !important;
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    .responsiveAddProgramCardContainer {
+        margin: 1vh 0 !important;
+        max-height: 63.4vh !important;
+        overflow-y: scroll;
+    }
+
+    .responsiveAddProgramCard {
+        max-width: 98% !important;
+        min-width: 98% !important;
+        min-height: fit-content !important;
+
+        border: solid red !important;
+    }
+
+    /* RESPONSVE USER CARD END */
+
+    /* RESPONSVE grad CARD */
+
+    .responsiveGradCard {
+        width: 100% !important;
+    }
+
+    /* RESPONSVE USER CARD END */
+
+    .responsiveButtonSpam {
+        width: 70vw !important;
+    }
+
+    /* Responsive Additional Image Program */
+    .responsiveImageCard {
+        display: flex; 
+        flex-direction: column;
+    }
+    /* Responsive Additional Image Program END */
+
+    /* Responsive Additional Image Program */
+    .responsiveTeacherCard {
+      width: 100% !important;
+    }
+    /* Responsive Additional Image Program END */
+
+    /* job listing */
+    .responsiveJob {
+        display: flex;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin: 0.5vh 0;
+    }
+    /* job listing END */
+
+}

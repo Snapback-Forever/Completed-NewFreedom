@@ -1,0 +1,164 @@
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { makeQuestion, resetErrorMessage, resetSuccessMessage } from '../../../redux/reducers/questionReducers'
+import { useNavigate } from 'react-router-dom'
+
+const ReferLandingContent = ({ darkMode, setDarkMode }) => {
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const successMessage = useSelector(state => state.quest.successMessage)
+
+  const [form, setForm] = useState({
+    title: 'Referring A Friend',
+    body: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    dispatch(makeQuestion(form))
+
+  }
+
+  useEffect(() => {
+
+    if (successMessage === "Question Has Been Sent To New Freedom Staff.") {
+      setForm((preve) => {
+        return {
+          ...preve,
+          title: '',
+          body: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          phoneNumber: '',
+        }
+      })
+      dispatch(resetSuccessMessage())
+      dispatch(resetErrorMessage())
+      navigate("/")
+    }
+
+
+  }, [successMessage])
+
+  return (
+    <div
+      style={{
+        width: '100vw',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        background: !darkMode
+          ? "linear-gradient(to right, lightBlue 30%, blue"
+          : "linear-gradient(to right, black, blue)",
+        padding: '2rem',
+      }}
+    >
+
+      <div className='messageUs' style={{ width: "100vw", display: "flex", flexDirection: "column", alignItems: "center", background: !darkMode ? "rgba(255, 255, 255, 0.663)" : "rgba(0, 0, 0, 0.63)", margin: "0 0 2vh 0", color: darkMode ? "white" : "black", }}>
+        <h1 style={{ width: "100%", textAlign: "center" }}>Refer A Fiend</h1>
+        <h4 style={{ width: "100%", textAlign: "center" }}>The Form To Refer A Friend Is Below. Please Make Sure You Submit Your Correct Email So We Can Respond. Thank you for the referral!</h4>
+      </div>
+
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: "center",
+          gap: '1rem',
+        }}
+      >
+
+        <h4 style={{ color: darkMode ? "white" : "black", width: "80%" }}>Contact Information For Friend:</h4>
+        <textarea
+          name="body"
+          placeholder="My Friends contact information is..."
+          className='responsiveInput'
+          value={form.body}
+          onChange={handleChange}
+          rows={4}
+          required
+          style={{ border: "solid lightGrey", background: "white", height: "50vh", width: "80%" }}
+          maxLength={5000}
+        />
+
+        <h4 style={{ color: darkMode ? "white" : "black", width: "80%" }}>Your First Name:</h4>
+        <input
+          type="text"
+          name="firstName"
+          placeholder="Jane/John"
+          className='responsiveInput'
+          value={form.firstName}
+          onChange={handleChange}
+          required
+          style={{ border: "solid lightGrey", background: "white", width: "80%" }}
+          maxLength={100}
+        />
+
+        <h4 style={{ color: darkMode ? "white" : "black", width: "80%" }}>Your Last Name:</h4>
+        <input
+          type="text"
+          name="lastName"
+          placeholder="Doe"
+          className='responsiveInput'
+          value={form.lastName}
+          onChange={handleChange}
+          required
+          style={{ border: "solid lightGrey", background: "white", width: "80%" }}
+          maxLength={100}
+        />
+
+        <h4 style={{ color: darkMode ? "white" : "black", width: "80%" }}>Your Email:</h4>
+        <input
+          type="email"
+          name="email"
+          className='responsiveInput'
+          placeholder="example@mail.com"
+          value={form.email}
+          onChange={handleChange}
+          required
+          style={{ border: "solid lightGrey", background: "white", width: "80%" }}
+          maxLength={100}
+        />
+
+        <h4 style={{ color: darkMode ? "white" : "black", width: "80%" }}>Your Phone Number: (Not Required)</h4>
+        <input
+          type="tel"
+          name="phoneNumber"
+          className='responsiveInput'
+          placeholder="(555)555-5555"
+          value={form.phoneNumber}
+          onChange={handleChange}
+          style={{ border: "solid lightGrey", background: "white", width: "80%" }}
+          maxLength={15}
+        />
+
+        {successMessage !== "Question Has Been Sent To New Freedom Staff." ? <button type="submit" className='responsiveButton rounded' style={{ background: "goldenRod", width: "80%", height: "5vh" }} >
+          Submit Your Referral
+        </button> : <div className='responsiveButton rounded' style={{ background: 'lime', width: '80%', height: '5vh', color: 'black', display: "flex", justifyContent: 'center', alignItems: "center" }} >
+          Thank You For Submitting Your Referral
+        </div>}
+
+      </form>
+    </div>
+  )
+}
+
+export default ReferLandingContent
