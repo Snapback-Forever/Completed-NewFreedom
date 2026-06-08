@@ -113,7 +113,7 @@ const QALandingContent = ({ darkMode, setDarkMode, landingContent, allPrograms, 
             <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
               {qaQuestions.map((quest) => {
                 return (
-                  <div style={{ background: "rgba(250, 235, 215, 0.960)", border: "solid black", borderRadius: "5%", margin: "1vh 0", width: "90%", padding: "1vw" }} key={quest?._id || crypto.randomUUID()}>
+                  <div style={{ background: "rgba(250, 235, 215, 0.960)", border: "solid black", margin: "1vh 0", width: "90%", padding: "1vh 1vw" }} key={quest?._id || crypto.randomUUID()}>
                     <div><b>Question:</b> {quest?.body}</div>
                     <div>
                       <div style={{ textAlign: "center", fontWeight: "bold", display: "flex", flexDirection: "column" }}>

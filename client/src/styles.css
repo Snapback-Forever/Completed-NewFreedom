@@ -447,8 +447,13 @@ dialog {
         background: linear-gradient(to top, black, blue) !important;
     }
 
+    .responsiveCenter {
+       text-align: center !important;
+       width: 100vw !important;
+    }
+    
     .responsiveImage {
-        width: 100% !important;
+        width: 100vw !important;
     }
 
     .responsiveMessage {

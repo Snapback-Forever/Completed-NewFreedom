@@ -48,7 +48,6 @@ const ContactLandingContent = ({ darkMode, setDarkMode, allSupporters }) => {
                 
                 <div style={{ display: "flex", flexDirection: "column" }}>
                 
-
                   <LocImage loc={loc} />
 
                   <div style={{ display: "flex", overflowX: "scroll", width: "30vw", margin: "0 1vw", minHeight: "14vh", maxHeight: "14vh" }} className='responsiveContactImagesContainer'>

@@ -29,20 +29,21 @@ const FirstLandingPageHeader = ({ newGif, newGif2, darkMode, setDarkMode, landin
                 }}
                 className="responsiveMessage"
             >
-                <div style={{ width: "50%" }} className='responsiveHeader'>
+              
                     <div style={{ width: "100%", color: !darkMode ? "black" : "white" }}>
 
-                        {landingContent?.subTitle ? <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(landingContent?.subTitle) }} style={{whiteSpace: "pre-wrap"}} /> :
-                            <div>
+                        {landingContent?.subTitle ? <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(landingContent?.subTitle) }} style={{whiteSpace: "pre-wrap"}} className='responsiveCenter' /> :
+                            <div className='responsiveCenter'>
                                 <h1>A First For </h1> 
                                 <h1>Second Chances</h1> 
-                                <h4>We believe in the power of positive change for Justice-impacted individuals and their communities.</h4>
+                                <h4>We believe in the power of positive change </h4>
+                                <h4>for Justice-impacted individuals and their communities.</h4>
                             </div>
                         }
 
                     </div>
 
-                </div>
+            
                 <div style={{ width: "50%", height: "100%", display: "flex", alignItems: "end" }} className='responsiveImageHeader'>
                     <img src={imgSrc} className="fadeInImage" style={{ maxHeight: "35vh", minWidth: "85%", maxWidth: "85%", margin: "1vh 0" }} />
                 </div>

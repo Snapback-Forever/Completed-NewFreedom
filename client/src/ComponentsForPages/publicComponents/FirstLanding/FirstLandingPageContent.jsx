@@ -24,7 +24,7 @@ const FirstLandingPageContent = ({ darkMode, setDarkMode, landingContent, allSto
     <div style={{ minHeight: "38%", color: !darkMode ? "black" : "white", display: "flex", flexDirection: "column", alignItems: "center", width: "100%", boxSizing: "border-box" }}>
 
       {landingContent?.mainVideo?.startsWith("http") ? (
-        <div style={{ width: "100%", display: "flex", justifyContent: "center", margin: "0.5rem 0" }}>
+        <div style={{ width: "100%", display: "flex", justifyContent: "center", margin: "0.5rem 0" }} className='responsiveCenter'>
           <video controls style={{ width: "60%", height: "50vh" }} aria-label="Welcome To New Freedom Video" title={`YouTube Link: ${landingContent?.mainVideo}`} className='videoMedia'>
             <source src={landingContent?.mainVideo} type="video/mp4" />
           </video>
@@ -43,7 +43,7 @@ const FirstLandingPageContent = ({ darkMode, setDarkMode, landingContent, allSto
 
 
         {allStories?.filter((story) => story?.consentToPublish).length !== 0 ? (
-          <div style={{ width: "100%", display: "flex", overflowX: "auto", gap: "1rem", boxSizing: "border-box", margin: "1vh 0", padding: "1vh 1vw", minWidth: 0 }}>
+          <div style={{ width: "100vw", display: "flex", overflowX: "auto", gap: "1rem", boxSizing: "border-box", margin: "1vh 0", padding: "1vh 1vw", minWidth: 0 }}>
             {allStories?.filter((story) => story?.consentToPublish).slice().reverse().slice(0, 10).map((story, index) => {
               const baseUrl = "http://localhost:8080";
 

@@ -29,31 +29,58 @@ const WhyLandingContent = ({ darkMode, setDarkMode, landingContent, allStories, 
 
       <div style={{ width: "100%", padding: "1vh 1vw", }} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(landingContent?.whyContent) }} />
 
-      {allStories?.filter((story) => story?.consentToPublish).length !== 0 ?
-        <div style={{ border: "10px double black", margin: "2vh 0", padding: "1vh 1vw", width: "100%", background: "rgba(255, 255, 255, 0.466)" }}>
-          <b>Success Stories:</b>
-          <div style={{ width: "100%", height: "fit-content", display: "flex", flexWrap: "wrap", gap: "1vw", boxSizing: "border-box", scrollbarWidth: "thin", msOverflowStyle: "none", margin: "1vh 0" }}>
+      {allStories?.filter((story) => story?.consentToPublish).reverse().slice(0, 6).map((story, index) => {
+  const baseUrl = "http://localhost:8080";
+  const imgSrc =
+    story?.imageFileId && story?.imageBucketName
+      ? `${baseUrl}/upload/image/${story?.imageFileId}?bucketName=${story?.imageBucketName}`
+      : story?.imageUrl;
 
-            {allStories?.filter((story) => story?.consentToPublish).reverse().slice(0, 6).map((story, index) => {
-              const baseUrl = "http://localhost:8080";
-              const imgSrc = story?.imageFileId && story?.imageBucketName ? `${baseUrl}/upload/image/${story?.imageFileId}?bucketName=${story?.imageBucketName}` : story?.imageUrl;
+  const isSmallScreen = window.innerWidth <= 768;
 
-              return (
-                <Link key={story?._id} to={`/successStory/${story?._id}`} style={{ color: "black", textDecoration: "none" }}>
-                  <div key={story?._id || index} style={{ minWidth: "30vw", maxWidth: "30vw", minHeight: "40vh", maxHeight: "40vh", margin: "0.5vh 0.5vw", background: "white" }}>
-                    <img src={imgSrc} alt="Success story" style={{ width: "100%", minHeight: "20vh", maxHeight: "20vh", objectFit: "cover", display: "block" }} />
-                    <h2 style={{ textAlign: "center" }}>{story?.firstName} {story?.lastName}</h2>
-                    <h5 style={{ textAlign: "center", }} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(story?.outcomeSummary) }} />
-                  </div>
-                </Link>
-              )
-            })}
-          </div>
-          <Link to={"/allSuccessStory"}>
-            <button className='rounded' style={{ background: "goldenRod", width: "100%", margin: "0.5vh 0", color: "black" }} > See All Success Stories </button>
-          </Link>
-        </div>
-        : ""}
+  return (
+    <Link
+      key={story?._id}
+      to={`/successStory/${story?._id}`}
+      style={{ color: "black", textDecoration: "none" }}
+    >
+      <div
+        style={{
+          width: isSmallScreen ? "100vw" : "30vw",
+          minWidth: isSmallScreen ? "100vw" : "30vw",
+          maxWidth: isSmallScreen ? "100vw" : "30vw",
+          minHeight: "40vh",
+          maxHeight: "40vh",
+          margin: isSmallScreen ? "0.5vh 0" : "0.5vh 0.5vw",
+          background: "white",
+        }}
+      >
+        <img
+          src={imgSrc}
+          alt="Success story"
+          style={{
+            width: "100%",
+            minHeight: "20vh",
+            maxHeight: "20vh",
+            objectFit: "cover",
+            display: "block",
+          }}
+        />
+
+        <h2 style={{ textAlign: "center" }}>
+          {story?.firstName} {story?.lastName}
+        </h2>
+
+        <h5
+          style={{ textAlign: "center" }}
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(story?.outcomeSummary),
+          }}
+        />
+      </div>
+    </Link>
+  );
+})}
 
 <>
           {supporters.length !== 0 && !supporters.length > 6 ? <h3 style={{ textAlign: "center", margin: "0.5rem 0", background: "lightGrey", color: "black" }}>Supporters Of Our Mission</h3> : ""}
