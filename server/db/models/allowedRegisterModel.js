@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+
 const allowedRegSchema = new mongoose.Schema({
 
   allowedToRegister: [{
@@ -8,6 +9,7 @@ const allowedRegSchema = new mongoose.Schema({
   notAllowedToRegister: [{
     type: String
   }],
+  
   userIsRegistered: [{
     type: String
   }],

@@ -59,7 +59,7 @@ const AllProgram = ({ trigger, setTrigger, allPrograms, darkMode, setDarkMode, a
           </h2>
 
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
-            {visiblePrograms.map(pro => (
+            {visiblePrograms?.map(pro => (
               <div key={pro?._id} style={{ display: "flex", justifyContent: "center" }}>
                 <AllProCard pro={pro} setTrigger={setTrigger} allLocations={allLocations} allUsers={allUsers} allMentee={allMentee} />
               </div>
