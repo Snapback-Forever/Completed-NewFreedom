@@ -306,7 +306,7 @@ const VisitProLandingContent = ({ darkMode, singleProgram, data, setData, setTri
           <div style={{ display: "flex", flexWrap: "wrap", width: "97vw" }}>
             <h1 style={{ width: "100%", textAlign: "center", color: darkMode ? "white" : "black" }}>Current Program Graduates</h1>
             {singleProgram?.graduates?.filter(grad => grad).map(grad => {
-              console.log(grad)
+              // console.log(grad)
               const baseUrl = 'http://localhost:8080';
               const imgSrc = (grad?.gradImageFileId && grad?.gradImageBucketName)
                 ? `${baseUrl}/upload/image/${grad.gradImageFileId}?bucketName=${grad.gradImageBucketName}` : grad.gradImage || noImage
@@ -316,7 +316,7 @@ const VisitProLandingContent = ({ darkMode, singleProgram, data, setData, setTri
 
                   <img src={imgSrc} style={{ minWidth: "20vw", maxWidth: "20vw", minHeight: "20vh", maxHeight: "20vh" }} />
                   <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-                    <h3 style={{ width: "100%", textAlign: "center" }}><span style={{ fontSize: "small" }}>Graduation Date: {moment(grad?.gradDate).format("hh:mm MMM Do YY")}</span></h3>
+                    <h3 style={{ width: "100%", textAlign: "center" }}><span style={{ fontSize: "small" }}>Graduation Dateasdf: {moment(grad?.gradDate).format("hh:mm MMM Do YY")}</span></h3>
                     <h5 style={{ width: "100%", textAlign: "center" }}>Congratulations:</h5>
                     <h3 style={{ width: "100%", textAlign: "center" }}>{grad?.firstName} {grad?.lastName}</h3>
                   </div>
